@@ -1,11 +1,14 @@
 import os
 import requests
 from google.cloud import storage
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # --- Config ---
 PROJECT_ID = "tese-491515"
 BUCKET_NAME = f"{PROJECT_ID}-digital-twin-datalake"
-ELEVENLABS_API_KEY = "sk_aa6749b7ad1b4f9f4f2118e7ab1649f7e7f917fbd05c90d6"
+ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
 
 # Update this to match the exact name of an extracted WAV file in your GCS bucket
 TARGET_AUDIO_FILE = "02_audio/RPReplay_Final1774720401_extracted.wav" 

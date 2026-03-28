@@ -4,3 +4,4 @@ google-cloud-aiplatform
 google-cloud-texttospeech
 requests==2.31.0
 fastapi[all]
+python-dotenv

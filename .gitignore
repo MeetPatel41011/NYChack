@@ -1,6 +1,4 @@
 twin_env/
 __pycache__/
 *.wav
-twin_env/
-__pycache__/
-*.wav
+.env
