@@ -5,10 +5,10 @@ from google.cloud import storage
 # --- Config ---
 PROJECT_ID = "tese-491515"
 BUCKET_NAME = f"{PROJECT_ID}-digital-twin-datalake"
-ELEVENLABS_API_KEY = "PASTE_YOUR_ELEVENLABS_KEY_HERE"
+ELEVENLABS_API_KEY = "sk_aa6749b7ad1b4f9f4f2118e7ab1649f7e7f917fbd05c90d6"
 
 # Update this to match the exact name of an extracted WAV file in your GCS bucket
-TARGET_AUDIO_FILE = "02_audio/YOUR_VIDEO_NAME_extracted.wav" 
+TARGET_AUDIO_FILE = "02_audio/RPReplay_Final1774720401_extracted.wav" 
 LOCAL_TEMP = "training_audio.wav"
 
 def train_custom_voice():

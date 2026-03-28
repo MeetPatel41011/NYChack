@@ -55,50 +55,61 @@
     <p id="status">System Ready</p>
 
     <script>
-        const startBtn = document.getElementById('startBtn');
-        const orb = document.getElementById('orb');
-        const status = document.getElementById('status');
+    const startBtn = document.getElementById('startBtn');
+    const orb = document.getElementById('orb');
+    const status = document.getElementById('status');
 
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    // DEBUG: Direct Test Function (Bypass Mic)
+    async function testConnection() {
+        status.innerText = "Testing connection...";
+        await sendToBackend("Hello Max, can you hear me?");
+    }
+
+    async function sendToBackend(text) {
+        try {
+            console.log("Sending to API:", text);
+            const response = await fetch('https://persona-twin-api-532164154780.us-central1.run.app/chat', { 
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: text })
+            });
+
+            const data = await response.json();
+            console.log("Response received:", data);
+            
+            const audio = new Audio("data:audio/mp3;base64," + data.audio_base64);
+            orb.classList.add('speaking');
+            status.innerText = "Max is responding...";
+            audio.play();
+
+            audio.onended = () => {
+                orb.classList.remove('speaking');
+                status.innerText = "Ready";
+            };
+        } catch (err) {
+            status.innerText = "Error: " + err.message;
+            console.error("Fetch Error:", err);
+        }
+    }
+
+    // Speech Logic
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        status.innerText = "Error: Browser does not support Speech Recognition.";
+    } else {
         const recognition = new SpeechRecognition();
-
         startBtn.onclick = () => {
+            console.log("Button clicked, starting recognition...");
             recognition.start();
-            status.innerText = "Listening... (Speak now)";
-            orb.style.box-shadow = "0 0 50px rgba(255, 0, 0, 0.5)"; // Turns slightly red when listening
         };
 
-        recognition.onresult = async (event) => {
+        recognition.onstart = () => { status.innerText = "Listening..."; };
+        recognition.onerror = (e) => { status.innerText = "Mic Error: " + e.error; };
+        recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
-            status.innerText = "Thinking: \"" + transcript + "\"";
-            orb.style.box-shadow = "0 0 30px rgba(0, 242, 254, 0.4)"; // Reset color
-
-            try {
-                // UPDATE THIS URL AFTER DEPLOYMENT
-                const response = await fetch('https://persona-twin-api-532164154780.us-central1.run.app/chat', { 
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: transcript })
-                });
-
-                const data = await response.json();
-                
-                // Play audio and start animation
-                const audio = new Audio("data:audio/mp3;base64," + data.audio_base64);
-                orb.classList.add('speaking');
-                status.innerText = "Speaking...";
-                audio.play();
-
-                // Stop animation when audio finishes
-                audio.onended = () => {
-                    orb.classList.remove('speaking');
-                    status.innerText = "System Ready";
-                };
-            } catch (err) {
-                status.innerText = "Error: Could not connect to brain.";
-                console.error(err);
-            }
+            sendToBackend(transcript);
         };
-    </script>
+    }
+</script>
 </body>
 </html>

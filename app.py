@@ -9,6 +9,7 @@ import uvicorn
 import vertexai
 from vertexai.generative_models import GenerativeModel
 from google.cloud import aiplatform
+from google.cloud import texttospeech
 
 # --- Configuration ---
 PROJECT_ID = "tese-491515"
@@ -79,30 +80,30 @@ def agent_judge(draft_response: str) -> dict:
         return {"status": "pass", "feedback": "JSON parsing failed, auto-passing."}
 
 # --- VOICE SYNTHESIS (The Multi-Language Engine) ---
+
 def synthesize_custom_voice(text_reply: str) -> str:
-    print("[Voice Engine] Generating ElevenLabs Multi-Language audio...")
+    print("[Voice Engine] Using Google Cloud TTS (Safe for Cloud Run)...")
+    client = texttospeech.TextToSpeechClient()
     
-    VOICE_ID = "YOUR_ELEVENLABS_VOICE_ID"
-    API_KEY = "YOUR_ELEVENLABS_API_KEY"
+    input_text = texttospeech.SynthesisInput(text=text_reply)
     
-    url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
-    headers = {
-        "Accept": "audio/mpeg",
-        "Content-Type": "application/json",
-        "xi-api-key": API_KEY
-    }
-    data = {
-        "text": text_reply,
-        "model_id": "eleven_multilingual_v2", 
-        "voice_settings": {"stability": 0.50, "similarity_boost": 0.75}
-    }
+    # Selecting a high-quality professional voice
+    voice = texttospeech.VoiceSelectionParams(
+        language_code="en-US",
+        name="en-US-Neural2-D", # Professional Male voice
+        ssml_gender=texttospeech.SsmlVoiceGender.MALE
+    )
     
-    response = requests.post(url, json=data, headers=headers)
-    if response.status_code == 200:
-        return base64.b64encode(response.content).decode('utf-8')
-    else:
-        print(f"Voice Error: {response.text}")
-        return ""
+    audio_config = texttospeech.AudioConfig(
+        audio_encoding=texttospeech.AudioEncoding.MP3
+    )
+
+    response = client.synthesize_speech(
+        request={"input": input_text, "voice": voice, "audio_config": audio_config}
+    )
+    print(f"✅ Success! Received {len(response.audio_content)} bytes of audio.")
+    return base64.b64encode(response.audio_content).decode('utf-8')
+
 
 # --- THE ORCHESTRATOR LOOP ---
 @app.post("/chat", response_model=ChatResponse)
