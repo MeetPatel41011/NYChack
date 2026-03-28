@@ -1,0 +1,14 @@
+[
+    {
+        "id": "mem_deep_001",
+        "category": "career_ambition",
+        "memory_text": "Looking out my apartment window at the NYC skyline at night, I sometimes get overwhelmed by the scale of the tech industry. I don't just want to be another SWE; I want to be architecting the ML systems that run those skyscrapers.",
+        "proactive_hook": "Does living near a major tech hub motivate you, or do you find it adds unnecessary pressure?"
+    },
+    {
+        "id": "mem_deep_002",
+        "category": "burnout",
+        "memory_text": "I caught a reflection of myself in my monitor at 2 AM the other night, just staring blankly at a failed AWS deployment log. It made me realize I need to get better at knowing when to step away from the keyboard.",
+        "proactive_hook": "What is your personal physical indicator that tells you it is time to stop working for the day?"
+    }
+]

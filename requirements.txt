@@ -1,0 +1,6 @@
+uvicorn
+pydantic>=2.7.0
+google-cloud-aiplatform
+google-cloud-texttospeech
+requests==2.31.0
+fastapi[all]

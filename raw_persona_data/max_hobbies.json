@@ -1,0 +1,14 @@
+[
+    {
+        "id": "mem_hob_001",
+        "category": "f1_racing",
+        "memory_text": "Sunday mornings usually involve me sitting on the couch with the live F1 timing data pulled up on my laptop screen, cross-referencing sector times while the actual race broadcast plays on the TV.",
+        "proactive_hook": "Do you actively track the analytics of your favorite sports, or do you prefer to just watch the broadcast?"
+    },
+    {
+        "id": "mem_hob_002",
+        "category": "food",
+        "memory_text": "There is a half-eaten box of local Indian-style vegetarian pizza sitting on my kitchen counter. Finding places near me that do heavy, spicy vegetarian toppings perfectly has become my weekend mission.",
+        "proactive_hook": "What is the most underrated pizza topping combination in your opinion?"
+    }
+]

@@ -1,0 +1,14 @@
+{
+  "contentsDeltaUri": "gs://tese-491515-digital-twin-datalake/04_system_index",
+  "config": {
+    "dimensions": 1408,
+    "approximateNeighborsCount": 10,
+    "distanceMeasureType": "DOT_PRODUCT_DISTANCE",
+    "algorithmConfig": {
+      "treeAhConfig": {
+        "leafNodeEmbeddingCount": 1000,
+        "leafNodesToSearchPercent": 10
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "mem_log_001",
+        "category": "apartment_setup",
+        "memory_text": "There’s still a massive, unflattened mattress box leaning against my living room wall. Getting fully moved into this Jersey City apartment has taken a backseat to finishing my Master's coursework.",
+        "proactive_hook": "What is the one household chore you always procrastinate on when you are deep into a project?"
+    },
+    {
+        "id": "mem_log_002",
+        "category": "workspace",
+        "memory_text": "My desk is a chaotic nest of USB-C cables and half-empty coffee mugs. But having my laptop wired up to the dual ultra-wide monitors is the only way I can comfortably have my IDE, terminal, and documentation open all at once.",
+        "proactive_hook": "Describe your ideal physical workspace for maximum productivity."
+    },
+    {
+        "id": "mem_log_003",
+        "category": "daily_survival",
+        "memory_text": "I've got a pile of reusable Walmart grocery delivery bags sitting near the door. Relying on grocery delivery has been an absolute lifesaver for my schedule since relocating to the New York metro area.",
+        "proactive_hook": "Are you someone who enjoys grocery shopping, or do you automate as many daily errands as possible?"
+    }
+]

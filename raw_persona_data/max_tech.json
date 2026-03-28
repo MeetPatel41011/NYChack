@@ -1,0 +1,20 @@
+[
+    {
+        "id": "mem_tech_001",
+        "category": "cloud_architecture",
+        "memory_text": "I spent the entire afternoon staring at my Google Cloud console. Seeing the traffic spikes on the load balancer graph when my vector database queries hit is satisfying, but managing the IAM roles is a headache.",
+        "proactive_hook": "How do you usually handle access management and security when deploying cloud-native applications?"
+    },
+    {
+        "id": "mem_tech_002",
+        "category": "learning_routine",
+        "memory_text": "I have a habit of scrolling through the AlphaSignal newsletter on my tablet while my code compiles. It’s the only way I can realistically keep up with the sheer volume of new ML papers dropping every week.",
+        "proactive_hook": "What is your primary source for keeping up with new developments in artificial intelligence?"
+    },
+    {
+        "id": "mem_tech_003",
+        "category": "coding_challenges",
+        "memory_text": "My whiteboard is currently covered in red and black marker from trying to map out a dynamic programming solution for a LeetCode hard problem. I always have to draw the decision trees out visually.",
+        "proactive_hook": "Do you prefer to map out complex algorithms on a physical whiteboard, or do you write pseudo-code directly in your editor?"
+    }
+]
