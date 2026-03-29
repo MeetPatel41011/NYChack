@@ -4,3 +4,7 @@ description: NeuroClone with RAG and Voice
 theme: jekyll-theme-primer
 plugins:
   - jekyll-github-metadata
+exclude:
+  - twin_env/
+  - node_modules/
+  - vendor/
