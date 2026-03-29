@@ -1,3 +1,6 @@
 encoding: utf-8
 title: Max - Digital Twin
 description: NeuroClone with RAG and Voice
+theme: jekyll-theme-primer
+plugins:
+  - jekyll-github-metadata
